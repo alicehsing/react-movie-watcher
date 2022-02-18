@@ -1,3 +1,7 @@
+body, html, #root, .App {
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -15,7 +19,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,4 +44,30 @@
 label {
   display: block;
   margin: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: medium;
+  margin: 5px;
+}
+
+header button {
+  align-self: flex-end;
+  margin: 10px;
+  height: 20px;
+  width: 60px;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+.search-list {
+  margin-top: 20px;
+}
+
+.search-list button {
+  color: red;
+  margin: 10px;
 }

@@ -1,4 +1,4 @@
-
+import './App.css';
 import { useState } from 'react';
 import { 
   BrowserRouter as Router,
@@ -11,6 +11,7 @@ import { logout } from './services/fetch-utils';
 import AuthPage from './AuthPage';
 import WatchListPage from './WatchListPage';
 import SearchPage from './SearchPage';
+
 
 export default function App() {
   //set the initial state of the user to come from localStorage, which is where supabase puts the token
@@ -26,14 +27,11 @@ export default function App() {
   return (
     <Router>
       <div className="App">
-        <header>
+        <header className='App-header'>
           {
             currentUser && 
-          <>
-            <NavLink activeClassName="my-active-class" to="/search">Search Movie</NavLink>
-            <NavLink activeClassName="my-active-class" to="/watchlist">Watchlist Page</NavLink>
-            <button onClick={handleLogout}>Logout</button>
-          </>
+            <><button onClick={handleLogout}>Logout</button>
+              <NavLink activeClassName="my-active-class" to="/search">Search Movie</NavLink><NavLink activeClassName="my-active-class" to="/watchlist">Watchlist Page</NavLink></>         
           }
         </header>
         <main>
