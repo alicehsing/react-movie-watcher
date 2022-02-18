@@ -1,4 +1,4 @@
-import { client, checkError } from './client';
+import { client } from './client';
 
 
 export async function signUpUser(email, password) {

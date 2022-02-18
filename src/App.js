@@ -1,4 +1,4 @@
-import logo from './logo.svg';import './App.css';
+
 import { useState } from 'react';
 import { 
   BrowserRouter as Router,
@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import { logout } from './services/fetch-utils';
 import AuthPage from './AuthPage';
+import WatchListPage from './WatchListPage';
 import SearchPage from './SearchPage';
 
 export default function App() {
@@ -40,8 +41,15 @@ export default function App() {
             <Route exact path="/">
               {
                 currentUser
-                  ? <Redirect to="/search" />
+                  ? <Redirect to="/watchlist" />
                   : <AuthPage setCurrentUser={setCurrentUser} />
+              }
+            </Route>
+            <Route exact path="/watchlist">
+              {
+                !currentUser
+                  ? <Redirect to="/" />
+                  : <WatchListPage />
               }
             </Route>
             <Route exact path="/search">
@@ -51,7 +59,6 @@ export default function App() {
                   : <SearchPage />
               }
             </Route>
-
           </Switch>
         </main>
       </div>
