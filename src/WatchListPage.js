@@ -7,7 +7,7 @@ export default function WatchListPage() {
   return (
     <div>
       <h2>My Watchlist</h2>
-      <MovieList />
+      <MovieList movies={movies} />
 
     </div>
   );
