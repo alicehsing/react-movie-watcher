@@ -89,9 +89,26 @@ header button {
   text-align:center;
   justify-content:center;
   padding: 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.movie-item:hover {
+  border: solid 2px rgb(113, 184, 128);
 }
 
 .movie-item img {
   width: 200px;
   height: 280px;
+}
+
+.watchlist-item {
+  background-color: rgb(228, 126, 187);
+}
+
+.watched {
+  border: solid 3px rgb(101, 132, 158);
+  cursor: initial;
+  background-color: rgb(228, 126, 187);
+
 }

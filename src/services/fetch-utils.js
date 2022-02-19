@@ -20,6 +20,12 @@ export async function logout() {
   return (window.location.href = '../');
 }
 
+export async function searchMovies(query) {
+  const response = await fetch(`/.netlify/functions/movies-endpoint?searchQuery=${query}`);
+  const json = await response.json();
+  return json.data.results;
+}
+
 export async function addToWatchList(movie) {
   const response = await client
     .from('movie_watchlist')
@@ -28,9 +34,24 @@ export async function addToWatchList(movie) {
   return checkError(response);
 }
 
-export async function searchMovies(query) {
-  const response = await fetch(`/.netlify/functions/movies-endpoint?searchQuery=${query}`);
-  const json = await response.json();
-  return json.data.results;
+export async function getWatchList() {
+  const response = await client
+    .from('movie_watchlist')
+    .select()
+    .order('id');
+
+  return checkError(response);
 }
+
+export async function watchMovie(id) {
+  const response = await client.
+    from('movie_watchlist')
+    .update({ watched: true })
+    .match({ id })
+    .single();
+
+  return checkError(response);
+}
+
+
 

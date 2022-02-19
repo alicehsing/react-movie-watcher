@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MovieList from './MovieList';
-import { searchMovies } from './services/fetch-utils';
+import { searchMovies, getWatchList } from './services/fetch-utils';
 
 export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
 
   async function handleSearch(e) {
     e.preventDefault();
@@ -13,9 +14,20 @@ export default function SearchPage() {
     console.log(movie);
   }
   
-  // async function refreshWatchlist() {
-  //   const myWatchList = await getWatchList();
-  // }
+  async function refreshWatchlist() {
+    const myWatchList = await getWatchList();
+    setWatchlist(myWatchList);
+  }
+
+  useEffect(() => {
+    refreshWatchlist();
+  }, []);
+
+  function isOnWatchList(api_id) {
+    const match = watchlist.find(item => Number(item.api_id) === Number(api_id));
+    return Boolean(match);
+  }
+
   return (
     <div className='search-list'>
       <form onSubmit={handleSearch}>
@@ -23,8 +35,8 @@ export default function SearchPage() {
         <button>Search</button>
       </form>
       <section>
-        Your Find:
-        <MovieList movies={results} />
+    
+        <MovieList movies={results} isOnWatchList={isOnWatchList} refreshWatchlist={refreshWatchlist}/>
       </section>
 
     </div>
