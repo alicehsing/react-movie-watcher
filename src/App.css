@@ -77,9 +77,10 @@ header button {
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .movie-item {
   width: 450px;
-  height: 650px;
+  min-height: 600px;
   margin: 10px;
   border: solid 2px rgb(88, 82, 75);
   border-radius: 10px;
@@ -89,12 +90,11 @@ header button {
   text-align:center;
   justify-content:center;
   padding: 10px;
-  font-size: 12px;
   cursor: pointer;
 }
 
 .movie-item:hover {
-  border: solid 2px rgb(113, 184, 128);
+  border: solid 10px rgb(113, 184, 128);
 }
 
 .movie-item img {
@@ -102,13 +102,17 @@ header button {
   height: 280px;
 }
 
+.movie-item p {
+  font-size: 12px;
+}
+
 .watchlist-item {
-  background-color: rgb(228, 126, 187);
+  background-color: #cce3de;
 }
 
 .watched {
   border: solid 3px rgb(101, 132, 158);
   cursor: initial;
-  background-color: rgb(228, 126, 187);
+  background-color: #e5e5e5;
 
 }
