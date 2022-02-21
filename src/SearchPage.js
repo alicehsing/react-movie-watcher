@@ -11,7 +11,6 @@ export default function SearchPage() {
     e.preventDefault();
     const movie = await searchMovies(searchQuery);
     setResults(movie);
-    console.log(movie);
   }
   
   async function refreshWatchlist() {
